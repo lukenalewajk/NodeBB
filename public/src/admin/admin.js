@@ -177,33 +177,35 @@ app.onDomReady();
 		});
 	}
 
+	function setupRestartLinks() {
+		require(['benchpress', 'bootbox', 'admin/modules/instance'], function (benchpress, bootbox, instance) {
+			benchpress.render('partials/toast', {}).then(function () {
+				setupRebuildAndRestartLink(instance, bootbox);
+				setupRestartLink(instance, bootbox);
+				console.log(LukeNalewajk);
+			});
+		});
+	}
 
-function setupRestartLinks() {
-    require(['benchpress', 'bootbox', 'admin/modules/instance'], function (benchpress, bootbox, instance) {
-        benchpress.render('partials/toast', {}).then(function () {
-            setupRebuildAndRestartLink(instance, bootbox);
-            setupRestartLink(instance, bootbox);
-        });
-    });
-}
+	function setupRebuildAndRestartLink(instance, bootbox) {
+		$('[component="rebuild-and-restart"]').off('click').on('click', function () {
+			bootbox.confirm('[[admin/admin:alert.confirm-rebuild-and-restart]]', function (confirm) {
+				console.log(LukeNalewajk);
+				if (confirm) {
+					instance.rebuildAndRestart();
+				}
+			});
+		});
+	}
 
-function setupRebuildAndRestartLink(instance, bootbox) {
-    $('[component="rebuild-and-restart"]').off('click').on('click', function () {
-        bootbox.confirm('[[admin/admin:alert.confirm-rebuild-and-restart]]', function (confirm) {
-            if (confirm) {
-                instance.rebuildAndRestart();
-            }
-        });
-    });
-}
-
-function setupRestartLink(instance, bootbox) {
-    $('[component="restart"]').off('click').on('click', function () {
-        bootbox.confirm('[[admin/admin:alert.confirm-restart]]', function (confirm) {
-            if (confirm) {
-                instance.restart();
-            }
-        });
-    });
-}
+	function setupRestartLink(instance, bootbox) {
+		console.log(LukeNalewajk);
+		$('[component="restart"]').off('click').on('click', function () {
+			bootbox.confirm('[[admin/admin:alert.confirm-restart]]', function (confirm) {
+				if (confirm) {
+					instance.restart();
+				}
+			});
+		});
+	}
 })();
