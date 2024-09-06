@@ -182,7 +182,6 @@ app.onDomReady();
 			benchpress.render('partials/toast', {}).then(function () {
 				setupRebuildAndRestartLink(instance, bootbox);
 				setupRestartLink(instance, bootbox);
-				console.log(LukeNalewajk);
 			});
 		});
 	}
@@ -190,7 +189,6 @@ app.onDomReady();
 	function setupRebuildAndRestartLink(instance, bootbox) {
 		$('[component="rebuild-and-restart"]').off('click').on('click', function () {
 			bootbox.confirm('[[admin/admin:alert.confirm-rebuild-and-restart]]', function (confirm) {
-				console.log(LukeNalewajk);
 				if (confirm) {
 					instance.rebuildAndRestart();
 				}
@@ -199,7 +197,6 @@ app.onDomReady();
 	}
 
 	function setupRestartLink(instance, bootbox) {
-		console.log(LukeNalewajk);
 		$('[component="restart"]').off('click').on('click', function () {
 			bootbox.confirm('[[admin/admin:alert.confirm-restart]]', function (confirm) {
 				if (confirm) {
@@ -208,4 +205,4 @@ app.onDomReady();
 			});
 		});
 	}
-})();
+});
